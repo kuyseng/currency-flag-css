@@ -1,0 +1,28 @@
+.flag-icon-background {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.flag-icon {
+  .flag-icon-background;
+  position: relative;
+  display: inline-block;
+  width: unit((4 / 3), em);
+  line-height: 1em;
+  &:before {
+    content: "\00a0";
+  }
+  &.flag-icon-squared {
+    width: 1em;
+  }
+}
+
+.flag-icon(@currency-code) {
+  .flag-icon-@{currency-code} {
+    background-image: ~"url(@{flag-icon-css-path}@{flag-icon-rect-path}/@{currency-code}.svg)";
+    &.flag-icon-squared {
+      background-image: ~"url(@{flag-icon-css-path}@{flag-icon-square-path}/@{currency-code}.svg)";
+    }
+  }
+}
